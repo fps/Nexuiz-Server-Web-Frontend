@@ -13,7 +13,7 @@ import re
 
 def rcon(msg): 
     answer = "";
-    p = Popen(bufsize=100000, args=["/home/tapas/local/bin/rcon.pl", msg], env={"rcon_address":"affenbande.org:26000", "rcon_password":"shellrulez", "rcon_colorcodes_raw":"1", "rcon_timeout":"30", "rcon_timeout_inter":"3", "rcon_timeout_challenge":"30"}, stdout=PIPE)
+    p = Popen(bufsize=100000, args=["/home/tapas/local/bin/rcon.pl", msg], env={"rcon_address":"host:port", "rcon_password":"****", "rcon_colorcodes_raw":"1", "rcon_timeout":"30", "rcon_timeout_inter":"3", "rcon_timeout_challenge":"30"}, stdout=PIPE)
     answer = p.stdout.read()
     #for line in p.stdout:
     #    answer = answer + line

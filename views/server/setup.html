@@ -1,22 +1,28 @@
 {{extend 'layout.html'}}
 <h1>Server Setup</h1>
-Here you can setup parameters to communicate with the nexuiz server process via rcon
 
-<table border="0">
-    <tr>
-        <td>
-            Server Address (host:port):
-            <form>
-                <input name="address"/>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            RCON password:
-            <form>
-                 <input name="rcon_password"/>
-            </form>
-        </td>
-    </tr>
-</table>
+Here you can setup parameters to communicate with the nexuiz server process via rcon. 
+<br><br>
+
+Parameters include:
+<br><br>
+
+<b>host</b>  a string of the form hostname:port
+<br><br>
+
+<b>rcon_password</b> a string containing the password for talking with the server
+<br><br>
+
+<hr>
+Enter a new key/value pair:<br><br>
+{{=SQLFORM(table)}}
+<hr>
+<br><br>
+Existing records:
+<br><br>
+
+
+{{for record in records:}}
+<hr>
+{{=SQLFORM(table, record, deletable=True)}}
+{{pass}}

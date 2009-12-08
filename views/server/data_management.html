@@ -12,11 +12,13 @@ Files you upload here go into your server's data/ directory
 
 <br><br>
 
-<form action="upload_file.htm" method="post" enctype="multipart/form-data">
+<form action="{{=URL(r=request, c='server', f='upload')}}" method="post" enctype="multipart/form-data">
   <p>Choose a file to upload<br>
     <input name="filename" type="file" size="50" maxlength="100000000" accept="text/*">
+    <input type="submit"/>
   </p>
 </form>
+
 
 <br>
 <hr>

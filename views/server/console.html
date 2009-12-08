@@ -1,0 +1,23 @@
+{{extend 'layout.html'}}
+<h1>Server Console</h1>
+<h2>
+<table border="1">
+<tr>
+<th>
+Enter command:
+<form>
+ <input name="command"/>
+</form>
+</th>
+</tr>
+
+<tr>
+<td aligh="left">
+<pre>
+{{=(session.log)}}
+
+</pre>
+</td>
+</tr>
+</table>
+</h2>

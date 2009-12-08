@@ -1,0 +1,76 @@
+{{extend 'layout.html'}}
+<h1>Server Data Management</h1>
+
+You might want to trigger a map rescan after doing anything here
+
+<br><br>
+
+
+<h2>File Upload</h2>
+
+Files you upload here go into your server's data/ directory
+
+<br><br>
+
+<form action="upload_file.htm" method="post" enctype="multipart/form-data">
+  <p>Choose a file to upload<br>
+    <input name="filename" type="file" size="50" maxlength="100000000" accept="text/*">
+  </p>
+</form>
+
+<br>
+<hr>
+<br>
+<h2>Current Files</h2>
+
+Choose from the list of files below those files that you want to delete from your server's data/ directory
+
+<br><br>
+
+<table border="1">
+    <tr>
+        <th>Filename</th><th>Size</th><th>Delete</th><th>Disable</th><th>Enable</th><th>Status</th>
+    </tr>
+    {{filelist=["a", "foo.pk3"]}}
+    {{for file in files:}}
+    <tr>
+        <td>
+            {{=file}}
+        </td>
+        <td>
+            7 trillion gigabytes
+        </td>
+        <td>
+            <form action="input_checkbox.htm">
+                <input type="checkbox" name="delete" value="">
+            </form>
+        </td>
+        <td>
+            <form action="input_checkbox.htm">
+                <input type="checkbox" name="disable" value="">
+            </form>
+        </td>
+         <td>
+            <form action="input_checkbox.htm">
+                <input type="checkbox" name="enable" value="">
+            </form>
+        </td>
+        <td>
+            Enabled
+        </td>
+    </tr>
+    {{pass}}
+</table>
+
+<br><br>
+
+<form action="file_action.htm">
+  <div>
+    <button name="execute" type="button" value="yes">
+       Execute selected actions
+
+    </button>
+  </div>
+</form>
+
+<br><br>

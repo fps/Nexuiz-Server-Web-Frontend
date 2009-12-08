@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+<h1>{{=(session.alert_message)}} - Are you sure?</h1>
+
+<form action="button.htm">
+  <div>
+    <a href='{{=URL(r=request, c=session.alert_yes_action[0], f=session.alert_yes_action[1])}}'>
+    <button name="Yes" type="button" value="yes">
+       Yes
+
+    </button>
+    </a>
+
+   <a href='{{=URL(r=request, c=session.alert_no_action[0], f=session.alert_no_action[1])}}'>
+    <button name="Yes" type="button" value="no">
+       No
+
+    </button>
+    </a>
+    
+  </div>
+</form>
+{{session.alert_yes_action=[]}}
+{{session.alert_no_action=[]}}
+{{session.alert_message=""}}

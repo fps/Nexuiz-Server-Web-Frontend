@@ -8,9 +8,13 @@ import applications.nexuiz_server.modules.rcon as rcon
 #import applications.nexuiz_server.controllers.default as default
 
 def setup():
-    return dict()
+    response.flash = T('Server Setup')
+    records = db().select(db.server_setup.ALL)
+    table = db.server_setup
+    return dict(records=records, table=table)
 
 def data_management():
+    response.flash = T('Server Data Management')
     return dict(files=["bla.pk3", "blub.pk3", "foobar.pk3"])
 
 def restart_map(): 
@@ -43,4 +47,14 @@ def console():
     return dict()
 
 def upload():
-    pass
+    response.headers['content-type'] = 'text/xml'
+    #file = request.body.read() 
+    filename = request.post_vars['filename'].filename
+    file = request.post_vars['filename'].file
+    
+    file = file.read()
+
+    f = open(filename, "w")
+    f.write(file)
+
+    return dict(filename=filename, success='succeeded')

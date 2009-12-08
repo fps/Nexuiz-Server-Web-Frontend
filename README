@@ -1,0 +1,24 @@
+- What's this?
+
+	A simple web frontend to control a nexuiz server
+
+- How to use it?
+
+	1. Get web2py from http://www.web2py.com/
+	2. Put the nexuiz_server application into the applications/ folder
+	3. Run python web2py.py in the main directory
+	4. Point your browser to the machine you have web2py started on. Default is port 8000
+
+- Requirements?
+
+	- You need to have rcon.pl in your PATH. Make sure it's able to communicate with your
+	  nexuiz server process by trying it manually, e.g.:
+
+	  rcon_address="localhost:26000" rcon_password="123" rcon.pl status
+
+	  This should give you status feedback of your server..
+
+- Author?
+
+	- Florian "lda17h" Paul Schmidt (mista.tapas@gmx.net)
+

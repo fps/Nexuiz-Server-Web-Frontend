@@ -18,6 +18,19 @@
 
 	  This should give you status feedback of your server..
 
+
+- Hacking
+
+	- The application right now contains quite a bit of boilerplate code.
+	  Basically all that's important at this point in time is:
+
+	  views/server/*.py
+          controllers/server.py
+          controllers/default.py
+
+	  models/menu.py
+	  models/db.py
+
 - Author?
 
 	- Florian "lda17h" Paul Schmidt (mista.tapas@gmx.net)

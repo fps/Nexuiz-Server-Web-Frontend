@@ -2,10 +2,18 @@
 
 	A simple web frontend to control a nexuiz server
 
+- How to get it?
+
+	- Run:
+
+      git clone git://github.com/mistatapas/Nexuiz-Server-Web-Frontend.git nexuiz_server
+
 - How to use it?
 
 	1. Get web2py from http://www.web2py.com/
-	2. Put the nexuiz_server application into the applications/ folder
+	2. Put the nexuiz_server folder into the applications/ folder 
+	   (make sure it's all lowercase - the git project checks out to a directory
+	   containing upper case characters - this confuses web2py)
 	3. Run python web2py.py in the main directory
 	4. Point your browser to the machine you have web2py started on. Default is port 8000
 

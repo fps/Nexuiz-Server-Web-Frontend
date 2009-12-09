@@ -61,4 +61,4 @@ service=Service(globals())                   # for json, xml, jsonrpc, xmlrpc, a
 ## >>> rows=db(db.mytable.myfield=='value').select(db.mytable.ALL)
 ## >>> for row in rows: print row.id, row.myfield
 #########################################################################
-db.define_table('server_setup', Field('host', 'string'), Field('rcon_password', 'string'))
+db.define_table('server_setup', Field('key', 'string'), Field('value', 'string'))

@@ -24,15 +24,19 @@ def setup():
     sqlrows=[]
     for row in rows:
         newform = SQLFORM(db.server_setup, row, deletable=True, linkto="server/setup_submit")
-        if newform.accepts(request.vars): response.flash="Submitted new key/value pair"
+        if newform.accepts(request.vars):
+            response.flash="Submitted new key/value pair"
+            redirect(URL(r=request, f='setup'))
         sqlrows.append(newform)
 
 
     #sqlrows = []
     form = SQLFORM(db.server_setup)
     
-    if form.accepts(request.vars): response.flash="Submitted new key/value pair"
-
+    if form.accepts(request.vars):
+        response.flash="Submitted new key/value pair"
+        redirect(URL(r=request, f='setup'))
+        
     return dict(rows=sqlrows, form=form)
 
 

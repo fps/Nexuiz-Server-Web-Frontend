@@ -32,14 +32,16 @@ auth.define_tables()                         # creates all needed tables
 crud=Crud(globals(),db)                      # for CRUD helpers using auth
 service=Service(globals())                   # for json, xml, jsonrpc, xmlrpc, amfrpc
 
-# crud.settings.auth=auth                      # enforces authorization on crud
+#auth.settings.actions_disabled.append('register')
+
+crud.settings.auth=auth                      # enforces authorization on crud
 # mail=Mail()                                  # mailer
 # mail.settings.server='smtp.gmail.com:587'    # your SMTP server
 # mail.settings.sender='you@gmail.com'         # your email
 # mail.settings.login='username:password'      # your credentials or None
 # auth.settings.mailer=mail                    # for user email verification
 # auth.settings.registration_requires_verification = True
-# auth.settings.registration_requires_approval = True
+auth.settings.registration_requires_approval = True
 # auth.messages.verify_email = \
 #  'Click on the link http://.../user/verify_email/%(key)s to verify your email'
 ## more options discussed in gluon/tools.py

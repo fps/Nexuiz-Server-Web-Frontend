@@ -9,7 +9,12 @@ def one_click_actions():
     rows = db().select(db.one_click_actions.ALL)
     inputs = []
     for row in rows:
-        inputs.append([INPUT(_type="button", _value=row.name), row.command, row.helptext])
+        new_input = INPUT(_type="button", _value=row.name);
+        if new_input.accepts(request_vars):
+            pass
+        
+        inputs.append([new_input, row.command, row.helptext])
+        
     return dict(rows=rows, inputs=inputs)
 
 @auth.requires_login()
@@ -25,12 +30,10 @@ def setup():
     for row in rows:
         newform = SQLFORM(db.server_setup, row, deletable=True, linkto="server/setup_submit")
         if newform.accepts(request.vars):
-            response.flash="Submitted new key/value pair"
+            session.flash="Submitted new key/value pair"
             redirect(URL(r=request, f='setup'))
         sqlrows.append(newform)
 
-
-    #sqlrows = []
     form = SQLFORM(db.server_setup)
     
     if form.accepts(request.vars):

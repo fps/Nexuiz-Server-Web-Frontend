@@ -15,14 +15,16 @@ Parameters include:
 
 <hr>
 Enter a new key/value pair:<br><br>
-{{=SQLFORM(table)}}
+{{=form}}
 <hr>
 <br><br>
 Existing records:
 <br><br>
 
 
-{{for record in records:}}
+
+{{for row in rows:}}
 <hr>
-{{=SQLFORM(table, record, deletable=True)}}
+{{=row}}
 {{pass}}
+

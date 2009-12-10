@@ -1,17 +1,30 @@
 # coding: utf8
 # try something like
-from subprocess import Popen
-from subprocess import PIPE
-import re
 
 import applications.nexuiz_server.modules.rcon as rcon
-#import applications.nexuiz_server.controllers.default as default
 
 def setup():
     response.flash = T('Server Setup')
-    records = db().select(db.server_setup.ALL)
-    table = db.server_setup
-    return dict(records=records, table=table)
+
+    db.server_setup.key.requires=IS_NOT_EMPTY()
+    db.server_setup.value.requires=IS_NOT_EMPTY()
+    
+    rows = db().select(db.server_setup.ALL)
+
+    sqlrows=[]
+    for row in rows:
+        newform = SQLFORM(db.server_setup, row, deletable=True, linkto="server/setup")
+        if newform.accepts(request.vars): response.flash="Submitted new key/value pair"
+        sqlrows.append(newform)
+
+
+    #sqlrows = []
+    form = SQLFORM(db.server_setup)
+    
+    if form.accepts(request.vars): response.flash="Submitted new key/value pair"
+
+    return dict(rows=sqlrows, form=form)
+
 
 def data_management():
     response.flash = T('Server Data Management')
@@ -52,9 +65,9 @@ def upload():
     filename = request.post_vars['filename'].filename
     file = request.post_vars['filename'].file
     
-    file = file.read()
+    postfile = file.read()
 
     f = open(filename, "w")
-    f.write(file)
+    f.write(postfile)
 
     return dict(filename=filename, success='succeeded')

@@ -34,6 +34,7 @@ def user():
     return dict(form=auth())
 
 
+@auth.requires_login()
 def download():
     """
     allows downloading of uploaded files
@@ -42,6 +43,7 @@ def download():
     return response.download(request,db)
 
 
+@auth.requires_login()
 def call():
     """
     exposes services. for example:
@@ -52,5 +54,6 @@ def call():
     session.forget()
     return service()
 
+@auth.requires_login()
 def confirmation():
     return dict()

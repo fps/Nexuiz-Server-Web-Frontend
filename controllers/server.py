@@ -32,7 +32,11 @@ def data_management():
 
 def restart_map(): 
     response.flash = T('Restart Map')
-    rcon.rcon("restart")
+    try: 
+          rcon.rcon("restart")
+    except:
+        return dict(message="rcon failed. check the server setup")
+
     return dict(message="Map restarted")
 
 def restart_map_request():

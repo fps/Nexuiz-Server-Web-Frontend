@@ -51,6 +51,8 @@ if 'auth' in globals():
              URL(request.application,'server','status'), []],
             [T('Server Console'), False, 
              URL(request.application,'server','console'), []],
+            [T('Server One Click Actions'), False, 
+             URL(request.application,'server','one_click_actions'), []],
             [T('Server Data Management'), False, 
              URL(request.application,'server','data_management'), []],
             [T('Restart Map'), False, 

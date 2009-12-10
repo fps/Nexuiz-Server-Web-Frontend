@@ -3,6 +3,14 @@
 
 import applications.nexuiz_server.modules.rcon as rcon
 
+def one_click_actions():
+    response.flash = T('One Click Actions')
+    rows = db().select(db.one_click_actions.ALL)
+    inputs = []
+    for row in rows:
+        inputs.append([INPUT(_type="button", _value=row.name), row.command, row.helptext])
+    return dict(rows=rows, inputs=inputs)
+
 def setup():
     response.flash = T('Server Setup')
 
@@ -48,7 +56,12 @@ def restart_map_request():
 
 def status(): 
     response.flash = T('Server Status')
-    return dict(message=rcon.rcon("status"))
+    try:
+        status = rcon.rcon("status")
+    except:
+        return dict(message="rcon failed. check the server setup")
+
+    return dict(message=status)
 
 def console():
     response.flash = T('Server Console')
